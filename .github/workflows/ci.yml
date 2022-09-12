@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        base_image_tag: [9,9.0,9.0.20220712]
+        base_image_tag: [9,9.0,9.0-20220901]
 
     steps:
       - name: Checkout
