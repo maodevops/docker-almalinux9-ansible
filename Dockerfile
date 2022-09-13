@@ -1,11 +1,11 @@
 #
-# Dockerfile used to build RockyLinux 8 images for testing Ansible
+# Dockerfile used to build AlmaLinux 9 images for testing Ansible
 #
+
 # syntax = docker/dockerfile:1
 
 ARG BASE_IMAGE_TAG=9
 
-# hadolint ignore=DL3006
 FROM almalinux:${BASE_IMAGE_TAG}
 
 ENV container=docker
@@ -32,4 +32,5 @@ RUN dnf -y install rpm dnf-plugins-core ; \
   pip3 install --no-cache-dir --upgrade pip
 
 VOLUME ["/sys/fs/cgroup"]
+
 CMD ["/usr/lib/systemd/systemd"]
