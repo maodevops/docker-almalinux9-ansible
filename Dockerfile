@@ -20,18 +20,16 @@ RUN cd /lib/systemd/system/sysinit.target.wants ; \
   rm -f /lib/systemd/system/basic.target.wants/* ; \
   rm -f /lib/systemd/system/anaconda.target.wants/*
 
-# Install required packages
-# hadolint ignore=DL3041
-RUN dnf -y install rpm dnf-plugins-core \
-  && dnf -y install epel-release \
-  && dnf -y update \
-  && dnf -y install \
+RUN dnf -y install rpm dnf-plugins-core ; \
+  dnf -y install epel-release ; \
+  dnf -y update ; \
+  dnf -y install ; \
     sudo \
     which \
     python3-pip \
-    python3-pyyaml \
-  && dnf clean all \
-  && pip3 install --no-cache-dir --upgrade pip
+    python3-pyyaml ; \
+  dnf clean all ; \
+  pip3 install --no-cache-dir --upgrade pip
 
 VOLUME ["/sys/fs/cgroup"]
 CMD ["/usr/lib/systemd/systemd"]
